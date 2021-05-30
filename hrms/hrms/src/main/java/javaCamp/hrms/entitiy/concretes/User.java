@@ -19,6 +19,7 @@ import lombok.NoArgsConstructor;
 @Inheritance(strategy = InheritanceType.JOINED)
 @AllArgsConstructor
 @NoArgsConstructor
+
 public class User {
 	
 	@Id
@@ -34,6 +35,9 @@ public class User {
 	
 	@Column(name = "email")
 	private String email;
+	
+	
+	
 	
 	
 

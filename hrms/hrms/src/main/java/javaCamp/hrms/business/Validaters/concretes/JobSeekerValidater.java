@@ -32,7 +32,7 @@ public class JobSeekerValidater implements JobSeekerValidaterService {
 		if (jobSeeker.getEmail().trim().isEmpty() || jobSeeker.getPassword().trim().isEmpty()
 				|| jobSeeker.getRepeatPassword().trim().isEmpty() || jobSeeker.getFirstName().trim().trim().isEmpty()
 				|| jobSeeker.getLastName().trim().isEmpty() || jobSeeker.getDateBirth().toString().trim().isEmpty()
-				|| jobSeeker.getTcNo().trim().isEmpty()) {
+				|| jobSeeker.getIdentityNumber().trim().isEmpty()) {
 
 			return true;
 		}

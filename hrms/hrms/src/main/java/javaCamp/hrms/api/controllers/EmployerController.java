@@ -13,7 +13,6 @@ import javaCamp.hrms.business.abstracts.EmployerDaoService;
 import javaCamp.hrms.core.utilies.results.DataResult;
 import javaCamp.hrms.core.utilies.results.Result;
 import javaCamp.hrms.entitiy.concretes.Employer;
-import javaCamp.hrms.entitiy.concretes.JobPosition;
 
 
 
@@ -29,7 +28,6 @@ public class EmployerController {
 		this.employerDaoService = employerDaoService;
 	}
 	
-	//veri isteme
 		@GetMapping("/getall")
 		public DataResult<List<Employer>> getAll(){
 			return this.employerDaoService.getAll();

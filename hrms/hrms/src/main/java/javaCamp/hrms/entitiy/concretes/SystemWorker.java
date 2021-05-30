@@ -5,6 +5,7 @@ package javaCamp.hrms.entitiy.concretes;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -16,10 +17,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "system_workers")
+@PrimaryKeyJoinColumn(name = "user_id", referencedColumnName = "id")
 public class SystemWorker  extends User{
 	
-	@Column(name = "user_id")
-	private int user_id;
+	
 	
 	@Column(name = "first_name")
 	private String firstName;
