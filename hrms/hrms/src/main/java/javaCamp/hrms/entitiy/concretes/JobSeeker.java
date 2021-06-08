@@ -1,9 +1,11 @@
 package javaCamp.hrms.entitiy.concretes;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
@@ -36,6 +38,10 @@ public class JobSeeker  extends User {
 	
 	@Column(name = "date_birth")
 	private Date dateBirth;
+	
+	@OneToMany(mappedBy = "jobSeeker")
+	private List<CV> cv;
+	
 	
 	
 	

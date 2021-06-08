@@ -4,12 +4,14 @@ import java.util.List;
 
 import javaCamp.hrms.core.utilies.results.DataResult;
 import javaCamp.hrms.core.utilies.results.Result;
-import javaCamp.hrms.entitiy.concretes.JobSeeker;
+import javaCamp.hrms.entitiy.concretes.CV;
 
-public interface JobSeekerDaoService {
+public interface CVDaoService {
 	
-	DataResult<List<JobSeeker>> getAll();
-	Result add(JobSeeker jobSeeker);
-
+	Result add(CV cv);
+	DataResult<List<CV>> getAll(); 
+	
+	DataResult<List<CV>> getByCvId(int cvId);
+	
 
 }

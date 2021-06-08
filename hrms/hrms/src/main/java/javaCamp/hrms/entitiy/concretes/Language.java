@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -18,29 +19,26 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-
 @Entity
-@Table(name = "cities")
 @AllArgsConstructor
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","advertisements"})
-
 @NoArgsConstructor
-public class City {
+@Table(name = "languages")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","cvLanguage"})
+
+public class Language {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "city_id")
-	private int cityId;
+	@Column(name = "language_id")
+	private int languageId;
+	
+	@Column(name = "language_name")
+	private String languageName;
 	
 	@JsonIgnore
-	@Column(name = "city_name")
-	private String cityName;
+	@OneToOne(mappedBy = "language")
+	private CvLanguage cvLanguage;
+
 	
-	@OneToMany(mappedBy = "city")
-	private List<Advertisement> advertisements;
+
 }
-	
-	
-
-
-

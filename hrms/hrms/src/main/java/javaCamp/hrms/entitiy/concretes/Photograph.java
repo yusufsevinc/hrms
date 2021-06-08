@@ -1,13 +1,14 @@
 package javaCamp.hrms.entitiy.concretes;
 
-import java.util.List;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -18,29 +19,29 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-
 @Entity
-@Table(name = "cities")
+@Table(name = "photographs")
 @AllArgsConstructor
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","advertisements"})
-
 @NoArgsConstructor
-public class City {
-	
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","cv"})
+
+public class Photograph {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "city_id")
-	private int cityId;
+	@Column(name = "photograph_id")
+	private int photographId;
+
 	
-	@JsonIgnore
-	@Column(name = "city_name")
-	private String cityName;
+	@Column(name = "photograph_link")
+	private String photographLink;
+
+	@Column(name = "created_on")
+	private LocalDateTime createdOn = LocalDateTime.now();
+
+	@ManyToOne()
+	@JoinColumn(name = "cv_id")
 	
-	@OneToMany(mappedBy = "city")
-	private List<Advertisement> advertisements;
+	private CV cv;
+
 }
-	
-	
-
-
-

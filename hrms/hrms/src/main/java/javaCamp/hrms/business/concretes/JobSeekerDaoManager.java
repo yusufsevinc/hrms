@@ -6,7 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javaCamp.hrms.business.Validaters.abstracts.JobSeekerValidaterService;
+import javaCamp.hrms.business.abstracts.CvExperienceDaoService;
+import javaCamp.hrms.business.abstracts.CvLanguageDaoService;
+import javaCamp.hrms.business.abstracts.CvPrewritingDaoService;
+import javaCamp.hrms.business.abstracts.CvSchoolDaoService;
 import javaCamp.hrms.business.abstracts.JobSeekerDaoService;
+import javaCamp.hrms.business.abstracts.LinkDaoService;
+import javaCamp.hrms.business.abstracts.PhotographDaoService;
 import javaCamp.hrms.core.checkMail.abstracts.CheckMailService;
 import javaCamp.hrms.core.mailConfirmation.abstracts.MailConfirmationService;
 import javaCamp.hrms.core.utilies.results.DataResult;
@@ -14,8 +20,10 @@ import javaCamp.hrms.core.utilies.results.ErrorResult;
 import javaCamp.hrms.core.utilies.results.Result;
 import javaCamp.hrms.core.utilies.results.SuccesDataResult;
 import javaCamp.hrms.core.utilies.results.SuccesResult;
+import javaCamp.hrms.dataAccess.abstracts.CvSkillDao;
 import javaCamp.hrms.dataAccess.abstracts.JobSeekerDao;
 import javaCamp.hrms.entitiy.concretes.JobSeeker;
+import springfox.documentation.swagger2.mappers.ModelMapper;
 @Service
 public class JobSeekerDaoManager implements JobSeekerDaoService {
 	
@@ -23,6 +31,7 @@ public class JobSeekerDaoManager implements JobSeekerDaoService {
 	private JobSeekerValidaterService JobSeekerValidaterService;
 	private CheckMailService<JobSeeker> checkMailService;
 	private MailConfirmationService mailConfirmationService;
+	
 	@Autowired
 	public JobSeekerDaoManager(JobSeekerDao jobSeekerDao,
 			JobSeekerValidaterService jobSeekerValidaterService,
@@ -33,6 +42,7 @@ public class JobSeekerDaoManager implements JobSeekerDaoService {
 		JobSeekerValidaterService = jobSeekerValidaterService;
 		this.checkMailService = checkMailService;
 		this.mailConfirmationService = mailConfirmationService;
+		
 	}
  
 	@Override
@@ -70,6 +80,8 @@ public class JobSeekerDaoManager implements JobSeekerDaoService {
 		
 		
 	}
+
+	
 	
 	
 

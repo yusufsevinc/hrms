@@ -7,7 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -17,30 +19,34 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 @Data
-
 @Entity
-@Table(name = "cities")
+@Table(name = "school")
 @AllArgsConstructor
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","advertisements"})
-
 @NoArgsConstructor
-public class City {
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","cvSchool"})
+
+public class School {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "city_id")
-	private int cityId;
+	@Column(name = "school_id")
+	private int schoolId;
+	
+	@Column(name = "school_name" ,nullable = false)
+	private String schoolName;
+	
+	@Column(name = "faculty_name", nullable = false)
+	private String facultyName;
+	
+	@Column(name = "department", nullable = false)
+	private String department;
 	
 	@JsonIgnore
-	@Column(name = "city_name")
-	private String cityName;
+	@OneToMany(mappedBy = "school")
+	private List<CvSchool> cvSchool;
 	
-	@OneToMany(mappedBy = "city")
-	private List<Advertisement> advertisements;
+	
+
 }
-	
-	
-
-
-
